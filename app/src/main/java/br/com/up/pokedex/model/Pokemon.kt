@@ -1,6 +1,6 @@
 package br.com.up.pokedex.model
 
 data class Pokemon(
-    val id : String,
+    val url : String,
     val name : String
 )
