@@ -25,7 +25,6 @@ class PokeApi {
 
     }
 
-
     fun getPokemons(listener:(List<Pokemon>?) -> Unit){
         val call = pokeService?.getPokemons()
         call?.enqueue(object : Callback<PokeResponse>{
@@ -39,5 +38,24 @@ class PokeApi {
                 listener(null)
             }
         })
+    }
+
+    fun getPokemonByName(name:String,
+                         listener: (Pokemon?) -> Unit){
+
+        val call = pokeService?.getPokemonByName(name)
+
+        call?.enqueue(object : Callback<Pokemon>{
+            override fun onResponse(call: Call<Pokemon>,
+                                    response: Response<Pokemon>) {
+                listener(response.body())
+            }
+
+            override fun onFailure(call: Call<Pokemon>,
+                                   t: Throwable) {
+                listener(null)
+            }
+        })
+
     }
 }
