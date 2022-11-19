@@ -1,3 +1,5 @@
 package br.com.up.pokedex.model
 
-data class Type()
+data class Type(
+    val type: TypeDetalhe
+)

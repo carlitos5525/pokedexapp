@@ -1,3 +1,6 @@
 package br.com.up.pokedex.model
 
-data class AbilityDetalhe()
+data class AbilityDetalhe(
+    val name: String,
+    val url: String
+)

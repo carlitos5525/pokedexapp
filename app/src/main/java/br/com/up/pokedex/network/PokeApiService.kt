@@ -2,6 +2,7 @@ package br.com.up.pokedex.network
 
 import br.com.up.pokedex.model.PokeResponse
 import br.com.up.pokedex.model.Pokemon
+import br.com.up.pokedex.model.PokemonDetalhe
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -17,6 +18,6 @@ interface PokeApiService {
 
     @GET("pokemon/{pokemonName}")
     fun getPokemonByName(@Path("pokemonName")
-                         pokemon:String) : Call<Pokemon>
+                         pokemon:String) : Call<PokemonDetalhe>
 
 }

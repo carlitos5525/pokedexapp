@@ -1,5 +1,5 @@
 package br.com.up.pokedex.model
 
-data class Abilities(
-    val name: String
+data class Ability(
+    val ability: AbilityDetalhe
 )

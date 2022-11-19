@@ -2,6 +2,7 @@ package br.com.up.pokedex.network
 
 import br.com.up.pokedex.model.PokeResponse
 import br.com.up.pokedex.model.Pokemon
+import br.com.up.pokedex.model.PokemonDetalhe
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,21 +42,37 @@ class PokeApi {
     }
 
     fun getPokemonByName(name:String,
-                         listener: (Pokemon?) -> Unit){
+                         listener: (PokemonDetalhe?) -> Unit){
 
         val call = pokeService?.getPokemonByName(name)
 
-        call?.enqueue(object : Callback<Pokemon>{
-            override fun onResponse(call: Call<Pokemon>,
-                                    response: Response<Pokemon>) {
+        call?.enqueue(object : Callback<PokemonDetalhe>{
+            override fun onResponse(call: Call<PokemonDetalhe>,
+                                    response: Response<PokemonDetalhe>) {
                 listener(response.body())
             }
 
-            override fun onFailure(call: Call<Pokemon>,
+            override fun onFailure(call: Call<PokemonDetalhe>,
                                    t: Throwable) {
                 listener(null)
             }
         })
 
+    }
+
+    fun getPokemonById(id:String,
+                        listener: (Pokemon?) -> Unit){
+        val call = pokeService?.getPokemonById(id)
+
+        call?.enqueue(object : Callback<Pokemon>{
+            override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
+                listener(response.body())
+            }
+
+            override fun onFailure(call: Call<Pokemon>, t: Throwable) {
+                listener(null)
+            }
+
+        })
     }
 }
